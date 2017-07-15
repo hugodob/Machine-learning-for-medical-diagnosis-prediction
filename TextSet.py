@@ -2,8 +2,9 @@ import csv
 import sys
 from collections import Counter
 import numpy as np
-import matplotlib.pyplot as plt
 import re
+from gensim import utils
+from gensim.models.doc2vec import LabeledSentence
 csv.field_size_limit(500 * 1024 * 1024)
 
 class TextSet(object):
@@ -28,3 +29,10 @@ class TextSet(object):
         #Important to shuffle now if we want to have consistent results
         np.random.shuffle(self.text)
         return self.text
+
+    def format_labeled_sentences(self):
+        sentences=[]
+        self.format_text()
+        for i in range(self.text.shape[0]):
+            sentences.append(LabeledSentence(self.text[i][1].split(),[str(i)]))
+        return sentences
