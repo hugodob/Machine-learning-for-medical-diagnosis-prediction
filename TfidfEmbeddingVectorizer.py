@@ -1,3 +1,5 @@
+from sklearn.feature_extraction.text import TfidfVectorizer
+import numpy as np
 class TfidfEmbeddingVectorizer(object):
     def __init__(self, word2vec):
         self.word2vec = word2vec
