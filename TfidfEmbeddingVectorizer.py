@@ -4,7 +4,7 @@ class TfidfEmbeddingVectorizer(object):
     def __init__(self, word2vec):
         self.word2vec = word2vec
         self.word2weight = None
-        self.dim = len(word2vec.itervalues().next())
+        self.dim = len(word2vec.values().next())
 
     def fit(self, X, y):
         tfidf = TfidfVectorizer(analyzer=lambda x: x)
